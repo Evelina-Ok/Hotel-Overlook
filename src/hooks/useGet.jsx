@@ -7,31 +7,21 @@ export const useGet = (url, token) => {
 
   useEffect(() => {
 
-    async function fetchData(){
         setIsLoading(true);
 
         const options = {
           headers: token ? {
             'Authorization' : `Bearer ${token}`
           } : {}
-        }
+        };
 
-        try {
-          const data = await fetch(url, options);
-          const res = await data.json();
-          setData(res);
-          
-        } catch (err) {
-          setError(err);
-    
-        } finally {
-          setIsLoading(false);
-        }
-    }
+        fetch(url, options)
+        .then((res) => res.json())
+        .then((data) => setData(data))
+        .catch((err) => setError(err))
+        .finally(() => setIsLoading(false))
 
-    fetchData();
+  }, [url])
 
-  }, [url]);
-  return { data, error, isLoading };
-};
-
+  return {data, error, isLoading};
+}

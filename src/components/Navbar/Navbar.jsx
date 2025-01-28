@@ -1,11 +1,32 @@
-import { NavLink } from "react-router-dom"
-import style from "./Navbar.module.scss"
+import { NavLink } from "react-router-dom";
+import style from "./Navbar.module.scss";
+import { useNavLinks } from "../../hooks/UseNavLinks";
 
+export function Navbar() {
+  const navLinks = useNavLinks();
 
-export function Navbar () {
-    return (
-        <nav className={style.navbarStyle}>
-            <ul>
+  return (
+    <nav className={style.navbarStyle}>
+      <ul>
+        {navLinks.map((item) => (
+          <li key={item.title}>
+            <NavLink
+              to={item.link}
+              className={({ isActive }) =>
+                isActive ? `${style.activeNavLink}` : style.navLink
+              }
+            >
+                {item.title}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
+{
+  /* <ul>
                 <li>
                     <NavLink to="/"
                     className={({isActive}) => ({
@@ -50,9 +71,5 @@ export function Navbar () {
                         LOGIN
                     </NavLink>
                 </li>
-            </ul>
-
-            
-        </nav>
-    )
+            </ul> */
 }

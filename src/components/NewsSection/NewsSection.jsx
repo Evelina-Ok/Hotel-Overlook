@@ -13,19 +13,25 @@ export function NewsSection () {
 
     console.log('news', data);
     
+    function handleNewsClick(id) {
+        navigate(`/news/${id}`);
+    }
+
     return (
         <>
         <h2>Sidste nyt</h2>
-        <GridContainer columns={3}>
+        <GridContainer columns={3} gap="six">
             {isLoading ? (
                     <div>Loading...</div>
         ) : (
-            data?.map((item) => {
+            data?.slice(0, 3).map((item) => {
                 return (
                 <Card
                 key={item.id}
-                image={"./images/"+nyhed-island.jpeg}
+                image={`./images/${item.image.filename}`}
+                // image={"./images/"+nyhed-island.jpeg}
                 title={item.title}
+                action={(id) => handleNewsClick(id)}
                 ></Card>
                 );
 })
