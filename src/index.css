@@ -1,0 +1,14 @@
+
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+}
+
+
+
+#root {
+  width: 100%;
+font-family: sans-serif;
+}
