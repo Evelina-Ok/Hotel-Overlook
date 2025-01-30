@@ -7,11 +7,11 @@ export function Slider ({ images, title }) {
   useEffect(() => {
     if (!images || images.length === 0) return;
 
-    const timeout = setTimeout(() => {
+    const interval = setInterval(() => {
       setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    }, 2000)
+    }, 3000)
 
-    return () => clearTimeout(timeout);
+    return () => clearInterval(interval);
   }, [images])
 
   if (!images || images.length === 0) {
@@ -24,6 +24,7 @@ export function Slider ({ images, title }) {
       <img src={`./images/${images[currentImage]}`} />
     <div>
       <h1>{title}</h1>
+      <span></span>
     </div>
     </section>
   );
