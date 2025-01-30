@@ -1,19 +1,24 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useGet } from "../hooks/useGet";
 import { GridContainer } from "../components/GridContainer/GridContainer";
 import { Card } from "../components/Card/Card";
+import { Slider } from "../components/Slider/Slider";
 
-export function HotelsDestinationsPage () {
+export function CountriesPage () {
     const { data } = useGet("http://localhost:4000/destinations");
+    
+    const sliderArray = ["seljalandvoss-iceland.jpg", "city-houses-reykjavik.jpg", "frankfurt-skyline-germany.jpg"]; 
     const navigate = useNavigate();
 
-    console.log('destinations', data);
+    console.log('countries', data);
     
     function handleCardClick(slug) {
         navigate(`/hotels/${slug}`);
     }
 
     return (
+        <>
+        <Slider images={sliderArray}/>
         <section>
             <div>
                 <h2>Vores destinationer</h2>
@@ -30,10 +35,11 @@ export function HotelsDestinationsPage () {
                 action={() => handleCardClick(item.slug)}
                 image={`./images/${item.CountryImage.country_image_filename}`}
                 title={item.name}
-                description={item.description}
+                // description={item.description}
                 ></Card>
             ))}
             </GridContainer>
         </section>
+        </>
     )
 }

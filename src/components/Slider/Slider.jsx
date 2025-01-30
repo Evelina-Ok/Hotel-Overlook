@@ -9,7 +9,7 @@ export function Slider ({ images, title }) {
 
     const timeout = setTimeout(() => {
       setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    }, 3000)
+    }, 2000)
 
     return () => clearTimeout(timeout);
   }, [images])

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 
 export function FrontPage () {
-    const sliderArray = ["slideshow.jpg", "slideshow1.jpg", "slideshow2.jpg", "slideshow3.jpg", "slideshow4.jpg", "slideshow5.jpg", "slideshow6.jpg"];
+    const sliderArray = ["frankfurt-skyline-germany.jpg", "seljalandvoss-iceland.jpg", "city-houses-reykjavik.jpg"];
     const navigate = useNavigate();
 
     return (

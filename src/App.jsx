@@ -1,31 +1,30 @@
-import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { UserContextProvider } from "./context/userContext";
 import { MainLayout } from "./layout/MainLayout";
 import { FrontPage } from "./pages/FrontPage";
-import { HotelsDestinationsPage } from "./pages/HotelsDestinationsPage";
-import { RoomsPage } from "./pages/RoomsPage";
 import { ReservationPage } from "./pages/ReservationPage";
 import { LoginPage } from "./pages/LoginPage";
-import { UserContextProvider } from "./context/userContext";
-import { HotelPage } from "./pages/HotelPage";
+import { CountriesPage } from "./pages/CountriesPage";
+import { CitiesPage } from "./pages/CitiesPage";
+import { HotelsPage } from "./pages/HotelsPage";
+import { RoomsPage } from "./pages/RoomsPage";
 
 function App() {
   return (
     <>
-      <UserContextProvider>
         <Router>
           <Routes>
             <Route path={"/"} element={<MainLayout />}>
               <Route index={true} element={<FrontPage />} />
-              <Route path="/hotels" element={<HotelsDestinationsPage />} />
-              <Route path="/hotels" element={<HotelPage />} />
+              <Route path="/hotels" element={<CountriesPage />} />
+              <Route path="/hotels/:slug" element={<CitiesPage />} />
+              <Route path="/hotels/:slug/:cityslug" element={<HotelsPage />} />
               <Route path="/rooms" element={<RoomsPage />} />
               <Route path="/reservation" element={<ReservationPage />} />
               <Route path="/login" element={<LoginPage />} />
             </Route>
           </Routes>
         </Router>
-      </UserContextProvider>
     </>
   );
 }
