@@ -5,6 +5,8 @@ export const UserContext = createContext()
 
 export const UserContextProvider = ({ children }) => {
     const [userData, setUserData] = useState(null);
+    const [userToken, setUserToken] = useState();
+
 
     useEffect (() => {
         if (!userData && sessionStorage.getItem('userData')) {
@@ -40,7 +42,7 @@ export const UserContextProvider = ({ children }) => {
       }, [userData]); */
     
       return (
-        <UserContext.Provider value={{ userData, setUserData }}>
+        <UserContext.Provider value={{ userData, setUserData, userToken, setUserToken }}>
           {children}
         </UserContext.Provider>
       );

@@ -21,7 +21,7 @@ export function Slider ({ images, title }) {
   return (
     <section
       className={style.sliderStyle}>
-      <img src={`./images/${images[currentImage]}`} />
+      <img src={`public/images/${images[currentImage]}`} />
     <div>
       <h1>{title}</h1>
       <span></span>

@@ -5,6 +5,7 @@
     height: 600px;
     background-size: cover;
     background-position: bottom;
+    object-fit: cover;
   }
   div {
     position: absolute;
@@ -25,7 +26,7 @@
     span {
         position: absolute;
       
-        width: 38rem;
+        width: 28rem;
         height: 1rem;
         background-color: #ff0000a0;
         border-bottom-right-radius: 100px;

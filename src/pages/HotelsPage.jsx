@@ -3,6 +3,7 @@ import { useGet } from "../hooks/useGet";
 import { GridContainer } from "../components/GridContainer/GridContainer";
 import { Card } from "../components/Card/Card";
 import { DestinationNavigation } from "../components/DestinavionNavigation/DestinavionNavigation";
+import { Slider } from "../components/Slider/Slider";
 
 export function HotelsPage () {
     const { cityslug, slug } = useParams();
@@ -10,6 +11,12 @@ export function HotelsPage () {
     // const { data: otherCities } = useGet(`http://localhost:4000/destinations/${slug}`)
     const navigate = useNavigate();
 
+    const sliderArray = [
+        "seljalandvoss-iceland.jpg",
+        "city-houses-reykjavik.jpg",
+        "frankfurt-skyline-germany.jpg",
+      ];
+    
     console.log('hotels', data);
 
     function handleCardClick(countrySlug, cityslug, hotelslug) {
@@ -20,6 +27,11 @@ export function HotelsPage () {
       );
  */
     return (
+        <>
+        <Slider
+            images={sliderArray}
+            title="HOTELLER & DESTINATIONER" />
+        <DestinationNavigation />
         <section>
             <div>
                 <h2>Vores hoteller i {data?.cities[0].name}</h2>
@@ -39,5 +51,6 @@ export function HotelsPage () {
             )}
             </GridContainer>
         </section>
+        </>
     )
 }
